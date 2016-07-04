@@ -1,0 +1,33 @@
+{
+  "name": "philelson/transformer",
+  "type": "Script",
+  "description": "List transformation into SQL ready list",
+  "homepage": "http://philelson.uk",
+  "license": "MIT",
+  "authors":
+  [
+    {
+      "name": "Phil Elson",
+      "email": "me@philelson.uk"
+    }
+  ],
+  "require":
+  {
+    "php": ">=5.5.9"
+  },
+  "autoload":
+  {
+    "psr-4":
+    {
+      "philelson\\Util\\": "src"
+    }
+  },
+  "minimum-stability": "dev",
+  "bin": [
+    "bin/sanitizer"
+  ],
+  "config":
+  {
+    "bin-dir": "bin/"
+  }
+}
