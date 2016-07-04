@@ -7,6 +7,9 @@ namespace philelson\Util;
  */
 class Transformer
 {
+    /**
+     * Default args index to the file name
+     */
     CONST INDEX_SOURCE = 1;
 
     /**
@@ -90,21 +93,21 @@ class Transformer
      */
     public function formatLines($lines)
     {
-        $formatted      = [];
-        $end            = end($lines);
-
-        foreach($lines as $line) {
-            $formattedLine = "\t'".$line."'";
-
-            if($line != $end) {
-                $formattedLine .= ",";
-            }
-
-            $formatted[] = $formattedLine;
-
-        }
+        $formatted = array_map([$this, '_formatLine'], $lines);
+        $formatted[sizeof($formatted)-1] = rtrim(end($formatted), ",");
 
         return $formatted;
+    }
+
+    /**
+     * Format line
+     *
+     * @param $line
+     * @return string
+     */
+    protected function _formatLine($line)
+    {
+        return "\t'".$line."',";
     }
 
     /**
@@ -118,5 +121,3 @@ class Transformer
         return implode(PHP_EOL, $lines);
     }
 }
-
-?>
